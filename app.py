@@ -20,6 +20,7 @@ events = []
 def index():
     """Render the main page"""
     print("📄 Serving index page")
+   # return render_template('test_simple.html')
     return render_template('index.html')
 
 @app.route('/api/events', methods=['GET'])
@@ -83,6 +84,9 @@ if __name__ == '__main__':
     
     # Get port from environment variable
     port = int(os.environ.get('PORT', 5000))
+     # Use debug=False for production
+    debug = os.environ.get('FLASK_ENV') != 'production'
+    app.run(host='0.0.0.0', port=port, debug=debug
     
     print(f"📍 Server will run on: http://localhost:{port}")
     print(f"📍 Or try: http://127.0.0.1:{port}")
